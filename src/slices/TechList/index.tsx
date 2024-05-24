@@ -6,13 +6,15 @@ import React, { useLayoutEffect, useRef } from "react";
 import { MdCircle } from "react-icons/md";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import Bounded from "@/components/Bounded";
 import Heading from "@/components/Heading";
+
+gsap.registerPlugin(ScrollTrigger);
+
 /**
  * Props for `TechList`.
  */
-
-gsap.registerPlugin(ScrollTrigger);
 
 export type TechListProps = SliceComponentProps<Content.TechListSlice>;
 
