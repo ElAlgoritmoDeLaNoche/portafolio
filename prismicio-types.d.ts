@@ -69,7 +69,7 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice = BiographySlice;
+type PageDocumentDataSlicesSlice = TechListSlice | BiographySlice;
 
 /**
  * Content for Page documents
@@ -425,6 +425,88 @@ type HeroSliceVariation = HeroSliceDefault;
  */
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
+/**
+ * Item in *TechList → Default → Primary → Tech group*
+ */
+export interface TechListSliceDefaultPrimaryTechGroupItem {
+  /**
+   * Tech Name field in *TechList → Default → Primary → Tech group*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tech_list.default.primary.tech_group[].tech_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tech_name: prismic.KeyTextField;
+
+  /**
+   * Tech Color field in *TechList → Default → Primary → Tech group*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tech_list.default.primary.tech_group[].tech_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  tech_color: prismic.ColorField;
+}
+
+/**
+ * Primary content in *TechList → Default → Primary*
+ */
+export interface TechListSliceDefaultPrimary {
+  /**
+   * Heading field in *TechList → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tech_list.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Tech group field in *TechList → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tech_list.default.primary.tech_group[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  tech_group: prismic.GroupField<
+    Simplify<TechListSliceDefaultPrimaryTechGroupItem>
+  >;
+}
+
+/**
+ * Default variation for TechList Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TechListSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TechListSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *TechList*
+ */
+type TechListSliceVariation = TechListSliceDefault;
+
+/**
+ * TechList Shared Slice
+ *
+ * - **API ID**: `tech_list`
+ * - **Description**: TechList
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TechListSlice = prismic.SharedSlice<
+  "tech_list",
+  TechListSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -453,6 +535,11 @@ declare module "@prismicio/client" {
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      TechListSlice,
+      TechListSliceDefaultPrimaryTechGroupItem,
+      TechListSliceDefaultPrimary,
+      TechListSliceVariation,
+      TechListSliceDefault,
     };
   }
 }

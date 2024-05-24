@@ -1,0 +1,40 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"value": "sheet",
+				"type": "Text"
+			},
+			"tech_group": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"tech_color",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "#e0a867",
+									"type": "Color"
+								}
+							],
+							[
+								"tech_name",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "if",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

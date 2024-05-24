@@ -17,6 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="bg-slate-900">
+      <head>
+        <link rel="icon" href="/avatar.jpeg" />
+      </head>
       <body className={urbanist.className}>
         <Header />
         {children}
