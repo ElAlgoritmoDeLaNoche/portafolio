@@ -3,11 +3,14 @@
 import clsx from "clsx";
 import React, { useState } from "react";
 import { Content, KeyTextField, asLink } from "@prismicio/client";
-import { PrismicNextLink } from "@prismicio/next";
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import Link from "next/link";
 import { MdMenu, MdClose } from "react-icons/md";
 import Button from "./Button";
 import { usePathname } from "next/navigation";
+
+import Avatar from '../../public/avatar.jpeg'
+import Image from "next/image";
 
 export default function NavBar({
   settings,
@@ -21,6 +24,7 @@ export default function NavBar({
     <nav aria-label="Main navigation">
       <ul className="flex flex-col justify-between rounded-b-lg bg-slate-50 px-4 py-2 md:m-4 md:flex-row md:items-center md:rounded-xl">
         <div className="flex items-center justify-between">
+          <Image src={Avatar} alt="" width='50' height='50' className='rounded-md' />
           <NameLogo name={settings.data.name} />
           <button
             aria-expanded={open}
@@ -34,7 +38,7 @@ export default function NavBar({
         <div
           className={clsx(
             "fixed bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-end gap-4 bg-slate-50 pr-4 pt-14 transition-transform duration-300 ease-in-out md:hidden",
-            open ? "translate-x-0" : "translate-x-[100%]",
+            open ? "translate-x-0" : "translate-x-[100%]"
           )}
         >
           <button
@@ -50,7 +54,7 @@ export default function NavBar({
               <li className="first:mt-8">
                 <PrismicNextLink
                   className={clsx(
-                    "group relative block overflow-hidden rounded px-3 text-3xl font-bold text-slate-900 ",
+                    "group relative block overflow-hidden rounded px-3 text-3xl font-bold text-slate-900 "
                   )}
                   field={link}
                   onClick={() => setOpen(false)}
@@ -65,7 +69,7 @@ export default function NavBar({
                       "absolute inset-0 z-0 h-full translate-y-12 rounded bg-yellow-300 transition-transform duration-300 ease-in-out group-hover:translate-y-0",
                       pathname.includes(asLink(link) as string)
                         ? "translate-y-6"
-                        : "translate-y-18",
+                        : "translate-y-18"
                     )}
                   />
                   <span className="relative">{label}</span>
