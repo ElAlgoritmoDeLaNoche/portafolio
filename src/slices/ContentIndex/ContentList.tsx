@@ -142,9 +142,11 @@ export default function ContentList({
         {items.map((post, index) => (
           <li
             key={index}
-            // ref={(el) => (itemsRef.current[index] = el)}
+            ref={(el: HTMLLIElement | null) => {
+              itemsRef.current[index] = el;
+            }}
             onMouseEnter={() => onMouseEnter(index)}
-            className="list-item opacity-0"
+            className="list-item opacity-1"
           >
             <a
               href={`${urlPrefix}/${post.uid}`}

@@ -21,9 +21,7 @@ const ContentIndex = async ({
   const blogPosts = await client.getAllByType("blog_post");
   const projects = await client.getAllByType("project");
 
-  const contentType = slice.primary.content_type || "Blog";
-
-  const items = contentType ? blogPosts : projects;
+  const items = slice.primary.content_type === "Blog" ? blogPosts : projects;
 
   return (
     <Bounded
