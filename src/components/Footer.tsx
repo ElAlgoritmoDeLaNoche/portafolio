@@ -7,6 +7,9 @@ import Bounded from "@/components/Bounded";
 import { isFilled } from "@prismicio/client";
 import { FaGithub } from "react-icons/fa6";
 
+import Avatar from "../../public/avatar.jpeg";
+import Image from "next/image";
+
 export default async function Footer() {
   const client = createClient();
   const settings = await client.getSingle("settings");
@@ -14,6 +17,13 @@ export default async function Footer() {
     <Bounded as="footer" className="text-slate-600">
       <div className="container mx-auto mt-20 flex flex-col items-center justify-between gap-6 py-8 sm:flex-row ">
         <div className="name flex flex-col items-center justify-center gap-x-4 gap-y-2 sm:flex-row sm:justify-self-start">
+          <Image
+            src={Avatar}
+            alt=""
+            width="50"
+            height="50"
+            className="rounded-md"
+          />
           <Link
             href="/"
             className="text-xl font-extrabold tracking-tighter text-slate-100 transition-colors duration-150 hover:text-yellow-400"
